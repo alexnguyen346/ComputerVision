@@ -34,7 +34,7 @@ color: #FF9900;
 <div class="page-header">
 
 <!-- Title and Name --> 
-<h1>Hand Gestures to Controll Moving Objects</h1> 
+<h1>Hand Gestures to Control Moving Objects</h1> 
 <span style="font-size: 20px; line-height: 1.5em;"><strong>Alexander Nguyen, Ryan Hua</strong></span><br>
 <span style="font-size: 18px; line-height: 1.5em;">Fall 2023 ECE 4554/5554 Computer Vision: Course Project</span><br>
 <span style="font-size: 18px; line-height: 1.5em;">Virginia Tech</span>
@@ -77,17 +77,36 @@ A figure that conveys the main idea behind the project or the main application b
 <br><br>
 <!-- Approach -->
 <h3>Approach</h3>
-<p>First, we would collect a dataset of images consisting of different hand gestures with labels in order to train the deep learning model. We would then preprocess the image to extract the hand region or to enhance certain features. For example, we could reduce noise using a Gaussian Kernel, isolate the hand using contour extraction, alter the pixels to make the intensities more prominent using thresholds, etc. We can use a 3x3 or 5x5 kernel. For the contour extraction, we can use the OpenCV library to draw the hand. We would probably use a threshold of 127, to differentiate the intensity of the new pixel. ashni Haria, Archanasri Subramanian, Nivedhitha Asokkumar, Shristi Poddar, Jyothi S Nayak, Hand Gesture Recognition for Human Computer Interaction, Procedia Computer Science, Volume 115, 2017, Pages 367-374, ISSN 1877-0509, https://doi.org/10.1016/j.procs.2017.09.092. (https://www.sciencedirect.com/science/article/pii/S1877050917319130)
-After that, we can use pre-trained convolutional neural network as the model for classifying the different gestures. Some pre-trained models could be Resnet or VGG-16. We can alter some parameters. Additionally, we could add on more custom layers to the model or fine-tune it. A layer of batch normalization is added after the 4th convolution block to normalize the output of the layers and prevent the model overfitting.
+<p>First, we would collect a dataset of images consisting of different hand gestures with labels in order to train the deep learning model. 
+  We would then preprocess the image to extract the hand region or to enhance certain features. 
+  For example, we could reduce noise using a Gaussian Kernel, isolate the hand using contour extraction, alter the pixels to make the intensities more prominent using thresholds, etc. 
+  We can use a 3x3 or 5x5 kernel. For the contour extraction, we can use the OpenCV library to draw the hand. We would probably use a threshold of 127, to differentiate the intensity of the new pixel. 
+  ashni Haria, Archanasri Subramanian, Nivedhitha Asokkumar, Shristi Poddar, Jyothi S Nayak, Hand Gesture Recognition for Human Computer Interaction, Procedia Computer Science, Volume 115, 2017, Pages 367-374, ISSN 1877-0509, https://doi.org/10.1016/j.procs.2017.09.092. 
+  (https://www.sciencedirect.com/science/article/pii/S1877050917319130)</p>
+<p>After that, we can use pre-trained convolutional neural network as the model for classifying the different gestures. Some pre-trained models could be Resnet or VGG-16. 
+We can alter some parameters. Additionally, we could add on more custom layers to the model or fine-tune it. A layer of batch normalization is added after the 4th convolution block to normalize the output of the layers and prevent the model overfitting.
 Mapada, Carl. “Hand Gesture Recognition.” Medium, Medium, 30 Dec. 2021, medium.com/@cmmapada/hand-gesture-recognition-5cdc0e380854.
 Ewe, E.L.R.; Lee, C.P.; Kwek, L.C.; Lim, K.M. Hand Gesture Recognition via Lightweight VGG16 and Ensemble Classifier. Appl. Sci. 2022, 12, 7643. https://doi.org/10.3390/app12157643</p>
+<div style="text-align: center; display: flex; justify-content: space-around;   align-items: center;
+">
+  <img style="height: 200px; width: 400px;" alt="" src="gaussian.png">
+  <img style="height: 100px; width: 300px;" alt="" src="threshold.png">
+  </div>
 
 
 <br><br>
 <!-- Results -->
 <h3>Experiments and results</h3>
 Provide details about the experimental set up (number of images/videos, number of datasets you experimented with, train/test split if you used machine learning algorithms, etc.). Describe the evaluation metrics you used to evaluate how well your approach is working. Include clear figures and tables, as well as illustrative qualitative examples if appropriate. Be sure to include obvious baselines to see if your approach is doing better than a naive approach (e.g. for classification accuracy, how well would a classifier do that made random decisions?). Also discuss any parameters of your algorithms, and tell us how you set the values of those parameters. You can also show us how the performance varies as you change those parameter values. Be sure to discuss any trends you see in your results, and explain why these trends make sense. Are the results as expected? Why?
-
+<p>We will use a hand gesture database found on Kaggle. The database is composed of 10 different hand-gestures that were performed by 10 different subjects (5 men and 5 women). This dataset has 20 thousand files of infrared images with their labels. 
+  https://www.kaggle.com/datasets/gti-upm/leapgestrecog/data
+  If we need more data specific to our actions/gestures. We would need to collect different hands in order to get data for those specific gestures. There should be proper lighting and background so the data can be consistent. We plan on having 5 - 10 gestures to classify. Ideally, it would be good to have at least 100 images of each. 
+  </p>
+  <p>We will be using a pre-trained CNN model such as VGG-16 or ResNet, since they would have pre-trained weights with a big dataset, therefore, it should make the process faster. We would fine-tune it to optimize is to hand gesture detection by adding custom layering as needed or freezing a layer to transfer weights to our model for our own adaptation. 
+  We would likely freeze the early layers since they usually perform the feature extractions and we would replace the fully connected layers with our custom layers since that’s where the classification happens. We would also make sure to cross-validate using 5-cross-fold validation so that our model is robust and reliable. 
+  A successful outcome would be to obtain a high accuracy (above 95%) in recognizing hand gestures in real-time. The experiment should include benchmarking of different preprocessing techniques, parameters, fine-tuning strategies, models, etc. We would look at their inference times and accuracy to see which changes are optimal. 
+  Throughout the process, there will be a lot of tweaking and additional optimization, therefore, we can document the different insights we discover from the experiments.
+  </p>
 <br><br>
 
 <!-- Main Results Figure --> 
