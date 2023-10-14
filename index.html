@@ -34,9 +34,9 @@ color: #FF9900;
 <div class="page-header">
 
 <!-- Title and Name --> 
-<h1>Your Title Here</h1> 
-<span style="font-size: 20px; line-height: 1.5em;"><strong>Names of Team Members Here</strong></span><br>
-<span style="font-size: 18px; line-height: 1.5em;">Fall 2021 ECE 4554/5554 Computer Vision: Course Project</span><br>
+<h1>Hand Gestures to Controll Moving Objects</h1> 
+<span style="font-size: 20px; line-height: 1.5em;"><strong>Alexander Nguyen, Ryan Hua</strong></span><br>
+<span style="font-size: 18px; line-height: 1.5em;">Fall 2023 ECE 4554/5554 Computer Vision: Course Project</span><br>
 <span style="font-size: 18px; line-height: 1.5em;">Virginia Tech</span>
 <hr>
 
@@ -45,26 +45,43 @@ Please see <a href="http://vision.cs.utexas.edu/projects/adapted_attributes/">th
 <!-- Goal -->
 <h3>Abstract</h3>
 
-One or two sentences on the motivation behind the problem you are solving. One or two sentences describing the approach you took. One or two sentences on the main result you obtained.
+<p>Robotics and automonous systems are beoming more and more prevalent in the world today. 
+  This also means that there is a demand for more innovative interactions among these systems.
+  The ability to control a moving object through hand gestures would allow for significant improvements in the user experience. 
+  It would allow for a hands-free interaction, in which, the user does not need to be in the same vicinity as the machine. 
+  A more practical functionality would be to control systems at a distance in cases where the environment is dangerous or inaccessible.  
+  Overall, our goal is to tackle the challenge of interpreting certain hand gestures with different actionable commands. 
+  This is a starting point and could allow for progress into a wide range of applications.</p>
 <br><br>
 <!-- figure -->
 <h3>Teaser figure</h3>
 A figure that conveys the main idea behind the project or the main application being addressed.
 <br><br>
 <!-- Main Illustrative Figure --> 
-<div style="text-align: center;">
-<img style="height: 200px;" alt="" src="mainfig.png">
+<div style="text-align: center; display: flex; justify-content: space-around;">
+<img style="height: 200px;" alt="" src="teaser1.png">
+<img style="height: 200px;" alt="" src="teaser2.png">
 </div>
 
 <br><br>
 <!-- Introduction -->
 <h3>Introduction</h3>
-Motivation behind the problem you are solving, what applications it has, any brief background on the particular domain you are working in (if not regular RBG photographs), etc. If you are using a new way to solve an existing problem, briefly mention and describe the existing approaches and tell us how your approach is new.
+<p>Robotics and automonous systems are beoming more and more prevalent in the world today. 
+  This also means that there is a demand for more innovative interactions among these systems.
+  The ability to control a moving object through hand gestures would allow for significant improvements in the user experience. 
+  It would allow for a hands-free interaction, in which, the user does not need to be in the same vicinity as the machine. 
+  A more practical functionality would be to control systems at a distance in cases where the environment is dangerous or inaccessible.  
+  Overall, our goal is to tackle the challenge of interpreting certain hand gestures with different actionable commands. 
+  This is a starting point and could allow for progress into a wide range of applications.</p>
 
 <br><br>
 <!-- Approach -->
 <h3>Approach</h3>
-Describe very clearly and systematically your approach to solve the problem. Tell us exactly what existing implementations you used to build your system. Tell us what obstacles you faced and how you addressed them. Justify any design choices or judgment calls you made in your approach.
+<p>First, we would collect a dataset of images consisting of different hand gestures with labels in order to train the deep learning model. We would then preprocess the image to extract the hand region or to enhance certain features. For example, we could reduce noise using a Gaussian Kernel, isolate the hand using contour extraction, alter the pixels to make the intensities more prominent using thresholds, etc. We can use a 3x3 or 5x5 kernel. For the contour extraction, we can use the OpenCV library to draw the hand. We would probably use a threshold of 127, to differentiate the intensity of the new pixel. ashni Haria, Archanasri Subramanian, Nivedhitha Asokkumar, Shristi Poddar, Jyothi S Nayak, Hand Gesture Recognition for Human Computer Interaction, Procedia Computer Science, Volume 115, 2017, Pages 367-374, ISSN 1877-0509, https://doi.org/10.1016/j.procs.2017.09.092. (https://www.sciencedirect.com/science/article/pii/S1877050917319130)
+After that, we can use pre-trained convolutional neural network as the model for classifying the different gestures. Some pre-trained models could be Resnet or VGG-16. We can alter some parameters. Additionally, we could add on more custom layers to the model or fine-tune it. A layer of batch normalization is added after the 4th convolution block to normalize the output of the layers and prevent the model overfitting.
+Mapada, Carl. “Hand Gesture Recognition.” Medium, Medium, 30 Dec. 2021, medium.com/@cmmapada/hand-gesture-recognition-5cdc0e380854.
+Ewe, E.L.R.; Lee, C.P.; Kwek, L.C.; Lim, K.M. Hand Gesture Recognition via Lightweight VGG16 and Ensemble Classifier. Appl. Sci. 2022, 12, 7643. https://doi.org/10.3390/app12157643</p>
+
 
 <br><br>
 <!-- Results -->
@@ -103,7 +120,7 @@ Provide a list of references to other work that supported your project.
 
   <hr>
   <footer> 
-  <p>© Names of Team Members Here</p>
+  <p>© Alexander Nguyen, Ryan Hua</p>
   </footer>
 </div>
 </div>
