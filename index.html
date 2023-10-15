@@ -44,69 +44,92 @@ Please see <a href="http://vision.cs.utexas.edu/projects/adapted_attributes/">th
 
 <!-- Goal -->
 <h3>Abstract</h3>
-
-<p>Robotics and automonous systems are beoming more and more prevalent in the world today. 
-  This also means that there is a demand for more innovative interactions among these systems.
-  The ability to control a moving object through hand gestures would allow for significant improvements in the user experience. 
-  It would allow for a hands-free interaction, in which, the user does not need to be in the same vicinity as the machine. 
-  A more practical functionality would be to control systems at a distance in cases where the environment is dangerous or inaccessible.  
-  Overall, our goal is to tackle the challenge of interpreting certain hand gestures with different actionable commands. 
-  This is a starting point and could allow for progress into a wide range of applications.</p>
+One or two sentences on the motivation behind the problem you are solving. One or two sentences describing the approach you took. One or two sentences on the main result you obtained.
 <br><br>
 <!-- figure -->
 <h3>Teaser figure</h3>
 A figure that conveys the main idea behind the project or the main application being addressed.
 <br><br>
 <!-- Main Illustrative Figure --> 
-<div style="text-align: center; display: flex; justify-content: space-around;">
-<img style="height: 200px;" alt="" src="teaser1.png">
+<div style="align-items: center; display: flex; justify-content: space-around;">
+<img style="height: 300px;" alt="" src="teaser1.png">
+<div style="display: flex; flex-direction: column;">
 <img style="height: 200px;" alt="" src="teaser2.png">
+<img style="height: 200px;" alt="" src="teaser3.png">
+</div>
 </div>
 
 <br><br>
 <!-- Introduction -->
 <h3>Introduction</h3>
+Motivation behind the problem you are solving, what applications it has, any brief background on the particular domain you are working in (if not regular RBG photographs), etc. If you are using a new way to solve an existing problem, briefly mention and describe the existing approaches and tell us how your approach is new.
 <p>Robotics and automonous systems are beoming more and more prevalent in the world today. 
   This also means that there is a demand for more innovative interactions among these systems.
   The ability to control a moving object through hand gestures would allow for significant improvements in the user experience. 
   It would allow for a hands-free interaction, in which, the user does not need to be in the same vicinity as the machine. 
   A more practical functionality would be to control systems at a distance in cases where the environment is dangerous or inaccessible.  
   Overall, our goal is to tackle the challenge of interpreting certain hand gestures with different actionable commands. 
+  We plan on implementing a convolutional nerual network model using both a pre-trained model alongside our own custom layers and functions.
   This is a starting point and could allow for progress into a wide range of applications.</p>
 
 <br><br>
 <!-- Approach -->
 <h3>Approach</h3>
-<p>First, we would collect a dataset of images consisting of different hand gestures with labels in order to train the deep learning model. 
-  We would then preprocess the image to extract the hand region or to enhance certain features. 
-  For example, we could reduce noise using a Gaussian Kernel, isolate the hand using contour extraction, alter the pixels to make the intensities more prominent using thresholds, etc. 
-  We can use a 3x3 or 5x5 kernel. For the contour extraction, we can use the OpenCV library to draw the hand. We would probably use a threshold of 127, to differentiate the intensity of the new pixel. 
-  ashni Haria, Archanasri Subramanian, Nivedhitha Asokkumar, Shristi Poddar, Jyothi S Nayak, Hand Gesture Recognition for Human Computer Interaction, Procedia Computer Science, Volume 115, 2017, Pages 367-374, ISSN 1877-0509, https://doi.org/10.1016/j.procs.2017.09.092. 
-  (https://www.sciencedirect.com/science/article/pii/S1877050917319130)</p>
-<p>After that, we can use pre-trained convolutional neural network as the model for classifying the different gestures. Some pre-trained models could be Resnet or VGG-16. 
-We can alter some parameters. Additionally, we could add on more custom layers to the model or fine-tune it. A layer of batch normalization is added after the 4th convolution block to normalize the output of the layers and prevent the model overfitting.
-Mapada, Carl. “Hand Gesture Recognition.” Medium, Medium, 30 Dec. 2021, medium.com/@cmmapada/hand-gesture-recognition-5cdc0e380854.
-Ewe, E.L.R.; Lee, C.P.; Kwek, L.C.; Lim, K.M. Hand Gesture Recognition via Lightweight VGG16 and Ensemble Classifier. Appl. Sci. 2022, 12, 7643. https://doi.org/10.3390/app12157643</p>
-<div style="text-align: center; display: flex; justify-content: space-around;   align-items: center;
-">
-  <img style="height: 200px; width: 400px;" alt="" src="gaussian.png">
-  <img style="height: 100px; width: 300px;" alt="" src="threshold.png">
-  </div>
+Describe very clearly and systematically your approach to solve the problem. Tell us exactly what existing implementations you used to build your system. Tell us what obstacles you faced and how you addressed them. Justify any design choices or judgment calls you made in your approach.
+<p>We will collect a dataset of hand gesture images, each labeled with the corresponding gesture. To ensure data quality, we will make sure to keep the background and lighting conditions consistent. 
+  Preprocessing techniques will be used to enhance the features need for gesture classification. 
+  This includes the application of Gaussian Kernels to reduce noise, contour extraction using OpenCV to isolate the hand region, and intensity enhancement through pixel thresholding. 
+  We will experiment with various kernel sizes and threshold values to optimize feature extraction.</p>
+<p>We will use pre-trained convolutional neural network (CNN) models, such as VGG-16 and ResNet as our training model. We will fine-tune these models, adapting them to the specific requirements of hand gesture recognition. 
+  For example, we will introduce batch normalization layers to stabilize training and prevent overfitting. Detailed adjustments will be made to the architecture as needed to suit our classification task.</p>
+<p>During the training phase, we will implement data augmentation techniques to increase the diversity of our training dataset and to avoid overfitting. 
+  Hyperparameters such as learning rates, optimizers, and loss functions will be fine-tuned to ensure the model reaches convergence. 
+  As stated before, batch normalization, will be incorporated to improve model performance.</p>
+<p>We will evaluate the model's performance using relevant metrics, such as accuracy and F1 score. 
+  These metrics will  measure the model's ability to correctly recognize hand gestures which considers both precision and recall. 
+  We will then map these classified hand gestures to commendable actions in order to move an object. Throughout the process, we will also be collecting results from different adjustments to the model and monitor the affects of different strategies.</p>
+  <div style="display: flex; justify-content: center;">
+  <figure>
+    <img style="height: 300px;" alt="" src="approach.png">
+    <figcaption>Fine-tuning pre-trained CNN and transfering parameters to our own layers [1]</figcaption>
+    </figure>
+    </div>
 
 
 <br><br>
 <!-- Results -->
 <h3>Experiments and results</h3>
 Provide details about the experimental set up (number of images/videos, number of datasets you experimented with, train/test split if you used machine learning algorithms, etc.). Describe the evaluation metrics you used to evaluate how well your approach is working. Include clear figures and tables, as well as illustrative qualitative examples if appropriate. Be sure to include obvious baselines to see if your approach is doing better than a naive approach (e.g. for classification accuracy, how well would a classifier do that made random decisions?). Also discuss any parameters of your algorithms, and tell us how you set the values of those parameters. You can also show us how the performance varies as you change those parameter values. Be sure to discuss any trends you see in your results, and explain why these trends make sense. Are the results as expected? Why?
-<p>We will use a hand gesture database found on Kaggle. The database is composed of 10 different hand-gestures that were performed by 10 different subjects (5 men and 5 women). This dataset has 20 thousand files of infrared images with their labels. 
-  https://www.kaggle.com/datasets/gti-upm/leapgestrecog/data
-  If we need more data specific to our actions/gestures. We would need to collect different hands in order to get data for those specific gestures. There should be proper lighting and background so the data can be consistent. We plan on having 5 - 10 gestures to classify. Ideally, it would be good to have at least 100 images of each. 
-  </p>
-  <p>We will be using a pre-trained CNN model such as VGG-16 or ResNet, since they would have pre-trained weights with a big dataset, therefore, it should make the process faster. We would fine-tune it to optimize is to hand gesture detection by adding custom layering as needed or freezing a layer to transfer weights to our model for our own adaptation. 
-  We would likely freeze the early layers since they usually perform the feature extractions and we would replace the fully connected layers with our custom layers since that’s where the classification happens. We would also make sure to cross-validate using 5-cross-fold validation so that our model is robust and reliable. 
-  A successful outcome would be to obtain a high accuracy (above 95%) in recognizing hand gestures in real-time. The experiment should include benchmarking of different preprocessing techniques, parameters, fine-tuning strategies, models, etc. We would look at their inference times and accuracy to see which changes are optimal. 
-  Throughout the process, there will be a lot of tweaking and additional optimization, therefore, we can document the different insights we discover from the experiments.
-  </p>
+<p>We will use a hand gesture database found on Kaggle. The database is composed of 10 different hand-gestures that were performed by 10 different subjects (5 men and 5 women). This dataset has 20 thousand files of infrared images with their corresponding labels [2]. 
+  We plan on either finding more datasets that display actions sepecifically for our project or collecting them ourselves. Ideally, we would need around 100-200 images for each action and aspect of these images should be consistent such as the lighting, background, size, etc.. 
+  We plan on recognizing 5 to 10 different hand gestures and mapping them to commandable actions. We will be splitting this dataset into two groups: training and testing. It will be an 80-20 split.</p>
+<p>We have found some code online to perform different parts of the training process. For the preprocessing process, there have been some scholarly documents detailing the methods to isolate the hand. This included recommending a 3x3 Gaussian Kernel for noise reduction, using a intensity threshold of 127, etc [3]. 
+  There is also a page on kaggle that discusses the use of CNN to recognize hand gestures. It goes through the process of looking through the dataset as well as providing the layers that it used in its CNN model [4]. We also found other codes from Medium.com that uses the pre-trained CNN models [5]. 
+  From some research so far, a layer of batch normalization can be added after the 4th convolution block to normalize the output of the layers and prevent the model from overfitting [6]. As we do more research, we plan on incorporating all of these methods and ideas to enhance the performance of our model.</p>
+  <div style="display: flex; justify-content: space-around; align-items: center; padding: 20px 0px">
+    <div style="display: flex; flex-direction: column;">
+      <figure>
+      <img style="height: 200px; width: 400px;" alt="" src="gaussian.png">
+      <figcaption>2D Gaussian kernel represented mathematically [3]</figcaption>
+      </figure> 
+      <figure>
+      <img style="height: 100px; width: 400px;" alt="" src="threshold.png">
+      <figcaption>Thresholding operation [3]</figcaption>
+    </figure>
+    </div>
+    <div>
+      <figure>
+    <img style="height: 300px;" alt="" src="transfer.png">
+    <figcaption>VGG-16 architecture on the left and refined architecture on the right [6]</figcaption>
+    </figure>
+    </div>
+  </div>
+<p>To speed up the training process and to utilize large-scale datasets, we will implement pre-trained CNN models, particularly VGG-16 or ResNet, into our project. Our strategy involves fine-tuning these models to optimize their performance for hand gesture recognition. 
+  Specifically, we will make adjustments to these models by introducing custom layers and freezing specific layers for weight transfer. Early layers are usually responsible for feature extraction, therefore, they will likely be frozen. Fully connected layers will be replaced with custom layers since these need to be adapted to our classification needs. 
+  We will rigorously cross-validate our models to ensure their robustness and reliability. This will help us gauge their performance under different unseen conditions.</p>
+<p>Our primary success criteria will be achieving a high accuracy, with a target accuracy of being above 95%. However, we acknowledge that we also need to take into account other metrics as well, therefore, we will also monitor F1 score, inference times, etc. to evaluate the model. 
+  Throughout the experimental process, we will collect insights and findings from each experiment. This data will include optimizations applied and their affects. This iterative process of experimentation and refinement will help lead to our project’s success.</p>
+
 <br><br>
 
 <!-- Main Results Figure --> 
@@ -134,6 +157,20 @@ This report has described .... Briefly summarize what you have done.
 <!-- References -->
 <h3>References</h3>
 Provide a list of references to other work that supported your project.
+<div style="display: flex; flex-direction: column;">
+<p>[1] Sahoo JP, Prakash AJ, Pławiak P, Samantray S. Real-Time Hand Gesture Recognition Using Fine-Tuned Convolutional Neural Network. Sensors (Basel). 2022 Jan 18;22(3):706. doi: 10.3390/s22030706. PMID: 35161453; PMCID: PMC8840381.</p>
+
+<p>[2] GTI. (2018). Hand Gesture Recognition Database. Retrieved October 15, 2023 from https://www.kaggle.com/datasets/gti-upm/leapgestrecog</p>
+
+<p>[3] Aashni Haria, Archanasri Subramanian, Nivedhitha Asokkumar, Shristi Poddar, Jyothi S Nayak, Hand Gesture Recognition for Human Computer Interaction, Procedia Computer Science, Volume 115, 2017, Pages 367-374, ISSN 1877-0509, https://doi.org/10.1016/j.procs.2017.09.092.</p>
+
+<p>[4] Harrington, B. (August, 2018). Hand Gesture Recognition Database with CNN, Verision 2. Retrieved October 15, 2023 from https://www.kaggle.com/code/benenharrington/hand-gesture-recognition-database-with-cnn/notebook</p>
+
+<p>[5] C. Mapada, “Hand gesture recognition,” Medium, https://medium.com/@cmmapada/hand-gesture-recognition-5cdc0e380854 (accessed Oct. 15, 2023).</p>
+
+<p>[6] Ewe, E.L.R.; Lee, C.P.; Kwek, L.C.; Lim, K.M. Hand Gesture Recognition via Lightweight VGG16 and Ensemble Classifier. Appl. Sci. 2022, 12, 7643. https://doi.org/10.3390/app12157643</p>
+</div>
+
 <br><br>
 
 
